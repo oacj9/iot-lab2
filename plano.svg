@@ -1,0 +1,78 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="980" viewBox="0 0 1600 980">
+<defs>
+  <pattern id="grid" width="32" height="32" patternUnits="userSpaceOnUse"><path d="M32 0H0V32" stroke="#4479A2" stroke-width="0.75" opacity="0.35" fill="none"/></pattern>
+  <style>
+    .main{font:700 35px Arial,sans-serif;letter-spacing:2px;fill:#F6FBFF}.sub{font:15px Arial,sans-serif;fill:#BBD4EA}
+    .h{font:700 21px Arial,sans-serif;letter-spacing:1px;fill:#F0F8FF}.pin{font:700 18px 'DejaVu Sans Mono',monospace;fill:#F4FAFF}
+    .note{font:15px Arial,sans-serif;fill:#CFE3F6}.tag{font:700 14px Arial,sans-serif;fill:#9ED3FF;letter-spacing:.5px}
+    .frame{stroke:#C4DEEF;stroke-width:2;fill:none}.inner{stroke:#96C3E2;stroke-width:1.5;fill:none}
+    .wire{stroke:#D9F1FF;stroke-width:3;fill:none;stroke-linecap:round}.wire-data{stroke:#8FE1FF;stroke-width:3;fill:none;stroke-linecap:round}
+    .terminal{fill:#123E66;stroke:#E1F5FF;stroke-width:2}.rule{stroke:#8CB9DB;stroke-width:1;fill:none}
+  </style>
+</defs>
+<rect width="1600" height="980" fill="#123E66"/>
+<rect width="1600" height="980" fill="url(#grid)"/>
+<rect x="40" y="40" width="1520" height="900" class="frame"/>
+<path d="M40 130H1560" class="frame"/>
+<text x="70" y="87" class="main">ESQUEMA DE CONEXIONES / ESTACIÓN IoT</text>
+<text x="72" y="113" class="sub">PLANO FUNCIONAL 01 · ESP32 DEVKIT V1 · DHT22 · SSD1306 I²C</text>
+
+<!-- Central processor block -->
+<rect x="95" y="181" width="535" height="638" class="frame"/>
+<text x="123" y="222" class="h">U1 · ESP32 DevKit V1</text>
+<path d="M120 242H600" class="rule"/>
+<rect x="136" y="294" width="189" height="239" class="inner"/>
+<path d="M164 323H299V493H164Z" class="inner"/>
+<text x="194" y="411" class="h">ESP32</text>
+<text x="151" y="560" class="note">Microcontrolador</text>
+<text x="151" y="585" class="note">y WiFi integrado</text>
+<text x="118" y="775" class="note">Los pines 3V3 y GND se muestran</text>
+<text x="118" y="799" class="note">repetidos como líneas lógicas comunes.</text>
+
+<!-- Device right top DHT -->
+<rect x="1010" y="181" width="510" height="262" class="frame"/>
+<text x="1034" y="219" class="h">U2 · DHT22</text>
+<text x="1034" y="246" class="note">Temperatura + humedad relativa</text>
+<rect x="1370" y="197" width="106" height="60" class="inner"/>
+<circle cx="1423" cy="213" r="10" class="inner"/>
+<path d="M1388 228H1458M1388 238H1458M1388 248H1458" class="rule"/>
+<text x="1032" y="430" class="note">NC (pin 3): sin conexión.</text>
+
+<!-- Device right bottom OLED -->
+<rect x="1010" y="481" width="510" height="338" class="frame"/>
+<text x="1034" y="520" class="h">U3 · Pantalla OLED SSD1306</text>
+<text x="1034" y="548" class="note">128 × 64 · I²C · dirección 0x3C</text>
+
+<!-- Straight wire lanes: fixed corresponding y coordinates, no intersections -->
+<!-- DHT lane 285 339 393 -->
+<g>
+ <circle cx="630" cy="287" r="7" class="terminal"/><circle cx="1010" cy="287" r="7" class="terminal"/>
+ <path d="M637 287H1003" class="wire"/>
+ <text x="570" y="293" class="pin" text-anchor="end">3V3</text><text x="1036" y="293" class="pin">VCC · 1</text>
+ <circle cx="630" cy="345" r="7" class="terminal"/><circle cx="1010" cy="345" r="7" class="terminal"/>
+ <path d="M637 345H1003" class="wire-data"/>
+ <text x="570" y="351" class="pin" text-anchor="end">GPIO 15</text><text x="1036" y="351" class="pin">SDA / DATA · 2</text>
+ <circle cx="630" cy="403" r="7" class="terminal"/><circle cx="1010" cy="403" r="7" class="terminal"/>
+ <path d="M637 403H1003" class="wire"/>
+ <text x="570" y="409" class="pin" text-anchor="end">GND</text><text x="1036" y="409" class="pin">GND · 4</text>
+</g>
+<!-- OLED lane 605 659 713 767 -->
+<g>
+ <circle cx="630" cy="600" r="7" class="terminal"/><circle cx="1010" cy="600" r="7" class="terminal"/>
+ <path d="M637 600H1003" class="wire"/>
+ <text x="570" y="606" class="pin" text-anchor="end">GND</text><text x="1036" y="606" class="pin">GND</text>
+ <circle cx="630" cy="660" r="7" class="terminal"/><circle cx="1010" cy="660" r="7" class="terminal"/>
+ <path d="M637 660H1003" class="wire"/>
+ <text x="570" y="666" class="pin" text-anchor="end">3V3</text><text x="1036" y="666" class="pin">VCC</text>
+ <circle cx="630" cy="720" r="7" class="terminal"/><circle cx="1010" cy="720" r="7" class="terminal"/>
+ <path d="M637 720H1003" class="wire-data"/>
+ <text x="570" y="726" class="pin" text-anchor="end">GPIO 22</text><text x="1036" y="726" class="pin">SCL</text>
+ <circle cx="630" cy="780" r="7" class="terminal"/><circle cx="1010" cy="780" r="7" class="terminal"/>
+ <path d="M637 780H1003" class="wire-data"/>
+ <text x="570" y="786" class="pin" text-anchor="end">GPIO 21</text><text x="1036" y="786" class="pin">SDA</text>
+</g>
+<path d="M40 858H1560" class="frame"/>
+<text x="70" y="894" class="tag">NOTAS</text>
+<text x="163" y="893" class="note">Este es un esquema de conexiones por señales, no la disposición física de los pines sobre la placa.</text>
+<text x="70" y="921" class="note">La señal SDA/DATA del DHT22 NO es el bus I²C. En Wokwi debes construir y cablear los tres dispositivos desde cero.</text>
+</svg>
