@@ -20,7 +20,7 @@ const int PIN_DHT = 15;
 const int PIN_SDA = 21;
 const int PIN_SCL = 22;
 const char* DISPOSITIVO = "doctorado-01";
-const char* API_URL = "https://TU-SERVICIO.onrender.com/mediciones";
+const char* API_URL = "https://iot-lab2.onrender.com/mediciones";
 
 // Objetos y tipo de datos preparados para el ejercicio.
 DHTesp sensor;
